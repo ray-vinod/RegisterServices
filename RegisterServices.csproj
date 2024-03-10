@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>RegisterServices</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>ray-vinod</Authors>
+    <Company>Self</Company>
+    <Description>It's register all app services to startup</Description>
+    <PackageTags>RegisterServices</PackageTags>
+    <PackageProjectUrl>https://github.com/ray-vinod/RegisterServices</PackageProjectUrl>
+    <License>MIT</License>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>
