@@ -1,6 +1,7 @@
 # Register Services
 
 > It's register all services in the project with minimal configuration.
+> In this version added configuration for read appsetging.json file and others.
 
 ## How to use this
 
