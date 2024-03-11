@@ -5,11 +5,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>RegisterServices</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>ray-vinod</Authors>
     <Company>Self</Company>
     <Description>It helps to register all services to pipeline and keep Program.cs clean</Description>
-    <PackageTags>RegisterServices</PackageTags>
+    <PackageTags>RegisterServices;Register Services;Services;Register;pipeline;pipeline services;registerservices</PackageTags>
     <PackageProjectUrl>https://github.com/ray-vinod/RegisterServices</PackageProjectUrl>
     <License>MIT</License>
   </PropertyGroup>
