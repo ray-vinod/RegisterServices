@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 {
     ...others code ...
 
-    builder.Services.AppServices();
+    builder.Services.AddServices(builder.Configuration);
 }
 ```
 
@@ -20,9 +20,22 @@ var builder = WebApplication.CreateBuilder(args);
 ```code
 public class HomeService : IService
 {
-    public void Endpoints(IServiceCollection services)
+    public void Services(IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IHomeService,HomeService>();
+    }
+}
+```
+
+```code
+public class OtherService : IService
+{
+    public void Services(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddScoped<IOtherService, OtherService>();
+
+        services.AddDbContext<YourDbContext>(options
+            => options.UseSqlite(configuration?.GetConnectionString("DefaultConnection")));
     }
 }
 ```

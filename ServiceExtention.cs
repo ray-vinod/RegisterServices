@@ -1,10 +1,11 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace RegisterServices ;
+namespace RegisterServices;
 
 public static class ServiceExtentions
 {
-    public static void AppServices(this IServiceCollection services)
+    public static void AddServices(this IServiceCollection services, IConfiguration configuration)
     {
         var appServices = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(s => s.GetTypes())
@@ -14,7 +15,7 @@ public static class ServiceExtentions
         {
             if (Activator.CreateInstance(serviceType) is IService serviceInstance)
             {
-                serviceInstance.AddServices(services);
+                serviceInstance.Services(services, configuration);
             }
         }
     }
