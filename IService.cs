@@ -1,8 +1,9 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace RegisterServices;
 
 public interface IService
 {
-    void AddServices(IServiceCollection services);
+    void Services(IServiceCollection services,IConfiguration configuration);
 }
