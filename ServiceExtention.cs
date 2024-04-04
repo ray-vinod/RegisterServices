@@ -5,18 +5,45 @@ namespace RegisterServices;
 
 public static class ServiceExtentions
 {
-    public static void AddServices(this IServiceCollection services, IConfiguration configuration)
+    public static void AddServices(this IServiceCollection services)
+    {
+        foreach (var serviceInstance in ScanService())
+        {
+            serviceInstance.Services(services);
+        }
+    }
+    private static IEnumerable<IService> ScanService()
     {
         var appServices = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(s => s.GetTypes())
-            .Where(t => typeof(IService).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract);
+            .Where(t => typeof(IService).IsAssignableFrom(t) && !t.IsInterface)
+            .Select(CreateInstance<IService>)
+            .Cast<IService>();
 
-        foreach (var serviceType in appServices)
+        return appServices;
+    }
+    private static TInterface CreateInstance<TInterface>(Type type)
+    {
+        try
         {
-            if (Activator.CreateInstance(serviceType) is IService serviceInstance)
+            return (TInterface)Activator.CreateInstance(type)!;
+        }
+        catch (MissingMethodException)
+        {
+            var configConstructor = type.GetConstructors()
+           .FirstOrDefault(ctor => ctor.GetParameters().Any(p => p.ParameterType == typeof(IConfiguration)));
+
+            if (configConstructor != null)
             {
-                serviceInstance.Services(services, configuration);
+                var configuration = new ConfigurationBuilder()
+                               .SetBasePath(Directory.GetCurrentDirectory())
+                               .AddJsonFile("appsettings.json")
+                               .Build();
+
+                return (TInterface)Activator.CreateInstance(type, configuration)!;
             }
+
+            throw new InvalidOperationException($"{type.Name} has only allowed injection of IConfiguration.");
         }
     }
 }
