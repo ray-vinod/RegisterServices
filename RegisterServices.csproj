@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>RegisterServices</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <Authors>ray-vinod</Authors>
     <Company>Self</Company>
     <Description>It helps to register all services to pipeline and keep Program.cs clean</Description>
