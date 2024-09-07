@@ -5,14 +5,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>RegisterServices</PackageId>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
     <Authors>ray-vinod</Authors>
-    <Company>Self</Company>
+    <Company>ray-vinod</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Description>It helps to register all services to pipeline and keep Program.cs clean</Description>
     <PackageTags>RegisterServices;Register Services;Services;Register;pipeline;pipeline services;registerservices</PackageTags>
     <PackageProjectUrl>https://github.com/ray-vinod/RegisterServices</PackageProjectUrl>
     <License>MIT</License>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
