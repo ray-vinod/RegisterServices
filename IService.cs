@@ -4,5 +4,5 @@ namespace RegisterServices;
 
 public interface IService
 {
-    void Services(IServiceCollection services);
+    void Service(IServiceCollection services);
 }
